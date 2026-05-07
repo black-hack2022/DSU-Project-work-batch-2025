@@ -1,0 +1,135 @@
+# Python virtual environments
+.venv/
+.venv_x_tis
+venv/
+ENV/
+env/
+*.egg-info/
+*.zip
+gpu_training_bundle.zip
+dist/
+build/
+
+# Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node.js and Next.js (for dashboard-next)
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp
+.pnp.js
+
+# TypeScript
+*.tsbuildinfo
+dist/
+build/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+*.lnk
+
+# Model weights and trained models
+*.pt
+*.pth
+*.pkl
+*.pickle
+*.h5
+*.onnx
+*.joblib
+
+# Data files (outputs and temporary data)
+*.csv
+*.json
+*.txt
+!requirements.txt
+!README.md
+*.gpickle
+
+# Large data directories
+gpu_training_bundle/
+x_tis_outputs/
+x_tis_outputs2/
+paper_figures/
+report_assets/
+easy_ham/
+network_threats/
+security_stack/
+sms+spam+collection/
+text_threats/
+url_threats/
+deliverables/
+
+# Log files
+*.log
+logs/
+*.out
+
+# Temporary and cache files
+*.cache
+.cache/
+*.tmp
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Poetry/Pipenv
+Pipfile.lock
+poetry.lock
+
+# Mac OS
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Artifacts and outputs
+artifacts/
+artifacts1/
+data/
+output/
+
+# Local development files
+*.local
+local_*
+temp/
+tmp/
+
+# Testing
+.tox/
+.hypothesis/

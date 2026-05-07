@@ -1,0 +1,26 @@
+% Results section (copy/paste into your paper)
+
+\section{Results}
+\subsection{Experimental Setup}
+We evaluate a graph-based malicious service detection model derived from the KDD’99/KDDTrain+ traffic corpus. Network connection records are aggregated at the \emph{service} level, producing a compact graph where each node represents a network service (e.g., \texttt{ftp}, \texttt{domain}, \texttt{irc}) and edges capture \emph{service relatedness via shared protocol neighborhoods} (constructed by projecting a bipartite service\,$\leftrightarrow$\,protocol graph into a service--service adjacency). In total, the graph contains \textbf{70 service nodes}.
+
+To avoid target leakage, we train and evaluate using a \textbf{no-leak feature set} consisting only of: (i) \texttt{src\_bytes\_mean} (mean source bytes per service), (ii) \texttt{dst\_bytes\_mean} (mean destination bytes per service), and (iii) \texttt{count} (number of aggregated connections per service). The binary label indicates whether a service is attack-linked (derived from historical attack presence in the underlying connections). All experiments use \texttt{random\_state=42}.
+
+\subsection{Model and Baselines}
+\textbf{Our method (Our-GNN)} is a lightweight 2-layer Graph Convolutional Network (GCN) implemented in PyTorch. Given node features $X$ and normalized adjacency $\hat{A}$, the model performs message passing and outputs $P(\mathrm{malicious})$ for each service. We compare against common non-graph baselines trained on the same node features: Logistic Regression, RBF-SVM, Random Forest, k-NN, and Naive Bayes.
+
+\subsection{Main Results}
+We report ROC-AUC along with Accuracy/Precision/Recall/F1. For robust reporting, we emphasize \textbf{5-fold stratified cross-validation (CV)} using pooled out-of-fold scores. The proposed graph model achieves \textbf{AUC $> 0.5$} and strong classification metrics.
+
+\begin{itemize}
+  \item \textbf{Our-GNN (5-fold CV, pooled):} AUC \textbf{0.962}, Accuracy \textbf{0.929}, F1 \textbf{0.961}. 
+  \item Baselines vary by metric; in our setting, Random Forest attains higher Accuracy/F1, while Our-GNN attains the highest AUC.
+\end{itemize}
+
+Paper-ready outputs (generated in the repository) include: ROC curve (CV pooled) \texttt{paper\_noleak\_roc\_compare\_cv.png}, metrics tables \texttt{paper\_noleak\_metrics\_cv.*}, and booktabs tables in \texttt{paper\_tables\_noleak.tex}.
+
+\subsection{Interpretation}
+The graph formulation enables \emph{context-aware detection}: a service’s risk score is influenced not only by its own traffic statistics but also by signals propagated from its protocol-neighborhood peers. This is relevant in network settings where malicious behavior clusters across related services and protocols.
+
+\subsection{Limitations and Reporting Notes}
+This experiment operates on a small, service-aggregated graph (70 nodes) with a strong class imbalance (most services are attack-linked). Consequently, single held-out splits can appear overly optimistic; we therefore recommend reporting cross-validation pooled ROC-AUC. Future work can increase realism by incorporating time-based splits, additional non-leaky features (e.g., entropy/unique source counts), and evaluation on an external dataset.

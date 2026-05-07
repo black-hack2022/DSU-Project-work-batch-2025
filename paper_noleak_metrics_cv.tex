@@ -1,0 +1,12 @@
+\begin{tabular}{llrrlllll}
+\toprule
+model & split & n & positives & accuracy & precision & recall & f1 & auc \\
+\midrule
+Our-GNN & cv5 & 70 & 66 & 0.929 & 1.000 & 0.924 & 0.961 & 0.962 \\
+NaiveBayes & cv5 & 70 & 66 & 0.700 & 0.979 & 0.697 & 0.814 & 0.826 \\
+KNN & cv5 & 70 & 66 & 0.943 & 0.943 & 1.000 & 0.971 & 0.794 \\
+SVM-RBF & cv5 & 70 & 66 & 0.943 & 0.943 & 1.000 & 0.971 & 0.784 \\
+RandomForest & cv5 & 70 & 66 & 0.957 & 0.970 & 0.985 & 0.977 & 0.748 \\
+LogReg & cv5 & 70 & 66 & 0.943 & 0.943 & 1.000 & 0.971 & 0.742 \\
+\bottomrule
+\end{tabular}
